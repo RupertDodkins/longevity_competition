@@ -39,7 +39,7 @@ Run the Script: Execute the Python script using the following commands:
 
 ```pip install notebook```
 
-```jupyter nbconvert --execute your_notebook.ipynb```
+```jupyter nbconvert --execute train.ipynb```
 
 Results and Submission: After running the script, you can examine the results displayed on the console, including the log loss scores of the individual models and the ensemble model. The submission file `submission.csv` will be generated in the project directory, containing the predictions for the test dataset.
 
