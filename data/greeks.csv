@@ -1,0 +1,11 @@
+start, end = format_dates((2022,8,1)), format_dates((2022,9,16))
+stock = qbw.get_stock_history(start=start, end =end)
+legs = [
+    LegMeta(trans='sell', contract='call', strike_offset= 15, exp_offset= 0),
+    LegMeta(trans='buy',  contract='call', strike_offset= 16, exp_offset= 0),
+    LegMeta(trans='sell', contract='put', strike_offset= -15, exp_offset= 0),
+    LegMeta(trans='buy',  contract='put', strike_offset= -16, exp_offset= 0),
+]  
+strat = StrategyBase(qbw=qbw, legs=legs)
+ic = measure_period_profit(stock, strat)
+plot_candles_and_profit(ic, lines=[f'{l.name}_strike' for l in strat.legs])
